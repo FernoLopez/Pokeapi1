@@ -14,13 +14,13 @@ import NavBar from './Components/Router/NavBar'
 
 function App() {
 
-  const [pokemons, setPokemons] = useState([]);
+  /* const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage] = useState(12);
+  const [pokemonsPerPage] = useState(12); */
   const [isLogged, setIsLogged] = useState(false) 
 
-  useEffect(() => {
+  /* useEffect(() => {
       setLoading(true);
     const URL=`https://pokeapi.co/api/v2/pokemon?limit=151`
     axios.get(URL)
@@ -33,13 +33,13 @@ function App() {
     .finally(() => setLoading(false));
    }, [])
 
-   /* console.log(pokemons) */
+   console.log(pokemons) 
 
 const indexOfLastPokemon = currentPage * pokemonsPerPage;
 const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
 const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
-const paginate = pageNumber => setCurrentPage(pageNumber);
+const paginate = pageNumber => setCurrentPage(pageNumber); */
   
 return (
     <div className="App">
@@ -51,13 +51,13 @@ return (
         <Route path='/' element={<Home />}/>
         
         <Route path='/pokedex' element={<Pokedex 
-      pokemons={currentPokemons}
-      loading={loading}
+     /*  pokemons={currentPokemons}
+      loading={loading} */
       /* setPokemons={setPokemons} *//>}>
-        <Route index element={<Pagination 
+        {/* <Route index element={<Pagination 
          pokemonsPerPage={pokemonsPerPage}
          totalPokemons={pokemons.length}
-         paginate={paginate}/>}/>
+         paginate={paginate}/>}/> */}
         </Route>
         <Route path='/pokedex/:id' element={<PokeInfo />}/> 
         </Route>

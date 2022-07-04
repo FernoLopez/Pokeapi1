@@ -6,7 +6,7 @@ import CharactersCards from './CharactersCards'
 import Form from '../Filter/Form'
 import { Outlet } from 'react-router-dom'
 
-const Pokedex = ({pokemons, loading}) => {
+const Pokedex = (/* {pokemons, loading} */) => {
 
   const infoUser = useSelector(state => state.infoUser)
 
@@ -55,9 +55,9 @@ const Pokedex = ({pokemons, loading}) => {
     )}
   }, [pokeSearh])
 
-   if (loading) {
+  /*  if (loading) {
     return <h2>Loading...</h2>;
-  } 
+  }  */
   
   return (
     <article>
@@ -75,7 +75,7 @@ const Pokedex = ({pokemons, loading}) => {
           />
         ))
       :
-      pokemons?.map(pokemon => (
+      characters?.map(pokemon => (
         <CharactersCards 
           key={pokemon.url}
           url={pokemon.url}
