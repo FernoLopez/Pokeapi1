@@ -1,27 +1,39 @@
 import React from 'react'
+import { useRef } from 'react';
 
-const Pagination = ({ pokemonsPerPage, totalPokemons, paginate }) => {
+const Pagination = ({arrayPages, currentPage, setCurrentPage, quantityPages}) => {
 
-        const pageNumbers = [];
-      
-        for (let i = 1; i <= Math.ceil(totalPokemons / pokemonsPerPage); i++) {
-          pageNumbers.push(i);
-        }
-      
+  const listNumber = useRef()
+
+    const prevPage = () => {
+      if(currentPage - 1 === 0){
+        setCurrentPage(quantityPages)
+      } else {
+      setCurrentPage(currentPage - 1)
+    }    
+  }
+
+  const nextPage = () => {
+    if(currentPage + 1 > quantityPages){
+      setCurrentPage(1)
+    } else {
+    setCurrentPage(currentPage + 1)
+  }    
+}
+
+const changePageTo = n => setCurrentPage(n) 
+
         return (
-          <div className='item-position'>
-          <nav>
-            <ul className='pagination'>
-              {pageNumbers.map(number => (
-              <li key={number} className='page-item'>
-                <button onClick={() => paginate(number)} 
-                href='!#' className='page-link paginationItem'>
-                {number}
-              </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className='pagination-container'>
+          <div onClick={prevPage} className='prev'>&#60;</div>
+          <ul ref={listNumber}>
+            {
+              arrayPages?.map(num => (
+                <li onClick={() => changePageTo(num)} key={num} className='pagination_number'>{num}</li>
+              ))
+            }
+          </ul>
+          <div onClick={nextPage} className='next'>&#62;</div>
           </div>
         );
       };

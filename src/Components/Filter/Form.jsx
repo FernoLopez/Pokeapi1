@@ -1,4 +1,5 @@
 import React from 'react'
+/* import { useForm } from 'react-hook-form' */
 
 const Form = ({setPokeSearch, typeList, setFilterType}) => {
 
@@ -12,7 +13,10 @@ const Form = ({setPokeSearch, typeList, setFilterType}) => {
 
   return (
     <form className='input-position'>
-        <input type='text' placeholder='Search your pokemon' onChange={changeInputText}/>
+        <input 
+        type='text' 
+        placeholder='Search your pokemon' 
+        onChange={changeInputText}/>
        <select onChange={changeSelect}>
         <option value='All Pokemons'>All Pokemons</option>
           {
